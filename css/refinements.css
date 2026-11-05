@@ -391,3 +391,32 @@ h4, .h4, .post__title, .why-card__title, .calc-q__title {
   .intro-text .why-cards { margin-top: 32px; }
 }
 .intro-text .why-card::after { display: none; }
+/* About typography follows the five shared roles at each breakpoint. */
+#intro-text-title {
+  font-size: var(--fs-h2) !important;
+  font-weight: var(--fw-heading) !important;
+}
+.intro-text::before {
+  background-image: url("../img/about-tree-source.png");
+  opacity: 1;
+  filter: none;
+}
+.intro-text__body { width: 100%; }
+.intro-text .intro-text__lead { width: 74%; }
+.intro-text .intro-text__sub { width: calc((100% - 16px) / 2); }
+.intro-text .why-card { padding-top: 64px; padding-bottom: 32px; }
+.page > .header.header--sticky,
+.page > .header--sticky .header__bar { background-color: #842b1e; }
+@media (max-width: 1199px) {
+  #intro-text-title { font-size: var(--fs-h3) !important; font-weight: var(--fw-body) !important; }
+  .intro-text .intro-text__sub { width: 100%; }
+}
+@media (max-width: 767px) {
+  #intro-text-title { font-size: var(--fs-h4) !important; }
+  .intro-text .intro-text__lead { width: 100%; }
+  .intro-text .why-card { padding-top: 48px; padding-bottom: 24px; }
+  .service-card--book { order: 1; }
+  .service-card--archive { order: 2; }
+  .service-card--tree { order: 3; }
+  .service-card--search { order: 4; }
+}
