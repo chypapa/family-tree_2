@@ -162,15 +162,15 @@ h4, .h4, .post__title, .why-card__title, .calc-q__title {
   background: var(--text);
 }
 .header--sticky .header__bar { height: var(--index-header); background: var(--text); }
-.header--sticky :is(.nav a, .logo-mark, .header__burger) { color: white !important; }
+.header--sticky :is(.nav a, .header__burger) { color: white !important; }
+.header--sticky .logo-mark { color: white; }
 .header--sticky :is(.header__pill, .header__burger) { background: transparent; }
 .header__mobile { justify-content: space-between; min-height: var(--index-header); padding-inline: var(--gut); }
 .index-2__mobile-logo { display: block; color: white; }
 .index-2__mobile-logo svg { display: block; width: 28px; height: 30px; }
 .policy__back { margin-top: calc(var(--index-header) + 24px); }
 
-/* Reserve actual space for both rows of squares, rather than covering the copy. */
-.archive-hero__panel,
+/* Service panels reserve space for their decorative squares. */
 .opening.service-hero .opening__content {
   background: var(--red-gradient);
   padding-top: calc(var(--square) + 40px);
@@ -187,4 +187,36 @@ h4, .h4, .post__title, .why-card__title, .calc-q__title {
   .archive-hero__panel, .opening.service-hero .opening__content { padding: 28px 20px 32px; }
   .service-card--book .service-art { transform: none; }
   .lead.container .lead__inner { border-radius: var(--radius); }
+}
+
+/* Restore the homepage panel's original vertical composition. */
+.archive-hero__panel {
+  padding: clamp(60px, 7vw, 145px) clamp(28px, 4.6vw, 105px) clamp(40px, 6vw, 110px) var(--edge);
+  background: linear-gradient(155deg, #a63928 12%, #b85f51 100%);
+}
+.service-card, .service-card--archive, .service-card--book, .service-card--tree {
+  background: linear-gradient(160deg, #a63928 10%, #b96052 100%);
+}
+.service-card--search { background: linear-gradient(35deg, #a63928, #bd6658); }
+.intro-text .why-card { background: linear-gradient(35deg, #a63928, #bc6253); }
+.lead__inner { background: linear-gradient(125deg, #a63928 12%, #b76659 100%); }
+.opening.service-hero .opening__content { background: linear-gradient(155deg, #a63928 12%, #b85f51 100%); }
+@media (min-width: 768px) {
+  .service-card--tree .service-art {
+    inset: 0;
+    opacity: .22;
+    mask-image: linear-gradient(135deg, transparent 25%, #000 75%);
+  }
+  .service-card--tree .service-art img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: right bottom;
+    right: -15%;
+    top: auto;
+    bottom: -15%;
+  }
+}
+@media (max-width: 767px) {
+  .archive-hero__panel { padding: 20px 20px 24px; }
 }
