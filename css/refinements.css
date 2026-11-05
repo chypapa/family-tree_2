@@ -8,7 +8,7 @@
   --fw-heading: 600;
   --surface-red: #a33120;
   --surface-light: #ad4b3c;
-  --red-gradient: linear-gradient(135deg, #a63928 0%, #ad4b3c 100%);
+  --red-gradient: linear-gradient(135deg, #a63928 0%, #ad4b3c 145%);
 }
 h3, .h3, h4, .h4 { font-weight: 500; }
 .archive-hero__panel { background: var(--red-gradient); }
@@ -192,15 +192,15 @@ h4, .h4, .post__title, .why-card__title, .calc-q__title {
 /* Restore the homepage panel's original vertical composition. */
 .archive-hero__panel {
   padding: clamp(60px, 7vw, 145px) clamp(28px, 4.6vw, 105px) clamp(40px, 6vw, 110px) var(--edge);
-  background: linear-gradient(155deg, #a63928 12%, #b85f51 100%);
+  background: linear-gradient(155deg, #a63928 12%, #b85f51 145%);
 }
 .service-card, .service-card--archive, .service-card--book, .service-card--tree {
-  background: linear-gradient(160deg, #a63928 10%, #b96052 100%);
+  background: linear-gradient(160deg, #a63928 10%, #b96052 145%);
 }
-.service-card--search { background: linear-gradient(35deg, #a63928, #bd6658); }
-.intro-text .why-card { background: linear-gradient(35deg, #a63928, #bc6253); }
-.lead__inner { background: linear-gradient(125deg, #a63928 12%, #b76659 100%); }
-.opening.service-hero .opening__content { background: linear-gradient(155deg, #a63928 12%, #b85f51 100%); }
+.service-card--search { background: linear-gradient(35deg, #a63928 10%, #bd6658 145%); }
+.intro-text .why-card { background: linear-gradient(35deg, #a63928 10%, #bc6253 145%); }
+.lead__inner { background: linear-gradient(125deg, #a63928 12%, #b76659 145%); }
+.opening.service-hero .opening__content { background: linear-gradient(155deg, #a63928 12%, #b85f51 145%); }
 @media (min-width: 768px) {
   .service-card--tree .service-art {
     inset: 0;
@@ -219,4 +219,88 @@ h4, .h4, .post__title, .why-card__title, .calc-q__title {
 }
 @media (max-width: 767px) {
   .archive-hero__panel { padding: 20px 20px 24px; }
+}
+
+/* Outlined pill badges share the consultation reference's spacing. */
+.lead__chips li, .gallery__badge {
+  padding: 6px 12px;
+  border: 1px solid white;
+  border-radius: 999px;
+  background: transparent;
+  color: white;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+.check input[type="checkbox"] { border-radius: 3px; }
+
+/* Body copy on light surfaces, without changing headings or red-panel copy. */
+:root, .index-2 { --body-on-light: #605f5d; --muted: var(--body-on-light); }
+.intro-text__sub, .post .post__desc, .post__btn-mobile,
+.review__text, .review__author, .voice__text, .voice__author,
+.about-svc p, .about-svc .dot-list, .tree-design__details,
+.calc__text, .calc-q__hint, .calc .radio, .calc .check,
+.policy p, .policy li, .gallery__note { color: var(--body-on-light); }
+.voice--video .voice__author { color: white; }
+
+/* The service covers use the homepage's bottom-aligned panel proportions. */
+.opening.service-hero .opening__content {
+  min-height: var(--home-panel-height, calc(270px + 20vw));
+  padding: clamp(60px, 7vw, 145px) clamp(28px, 4.6vw, 105px) clamp(40px, 6vw, 110px) var(--edge);
+}
+/* Keep copy clear of the lower-right squares while allowing the panel to sit lower. */
+.opening.service-hero .opening__text { max-width: calc(100% - var(--square)); }
+@media (max-width: 767px) {
+  .opening.service-hero {
+    display: grid;
+    grid-template-rows: minmax(160px, 1fr) auto;
+    min-height: 100svh;
+    padding-top: var(--index-header);
+  }
+  .opening.service-hero .opening__media { position: relative; inset: auto; height: 100%; min-height: 160px; }
+  .opening.service-hero .opening__content {
+    min-height: var(--home-panel-height, clamp(308px, calc(524px - 30vw), 430px));
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 20px 20px 24px;
+  }
+  .opening.service-hero .opening__text { max-width: 100%; }
+}
+
+/* Match the four homepage benefit cards and restore the circular paging cursor. */
+.stage { background: linear-gradient(35deg, #a63928 10%, #bc6253 145%); }
+.stages__bubble { background-color: white; color: var(--red); border-radius: 50%; }
+/* A single author baseline for text, photo and video review cards. */
+.voices__grid { align-items: stretch; }
+.voices__grid .voice { padding-bottom: calc(var(--pad-card) + 30px); }
+.voices__grid .voice__author,
+.voices__grid .voice--photos .voice__author {
+  position: absolute;
+  left: var(--pad-card);
+  right: var(--pad-card);
+  bottom: var(--pad-card);
+  margin: 0;
+  padding: 0;
+}
+
+.hero-panel-measure {
+  position: absolute;
+  left: -100000px;
+  top: 0;
+  display: block;
+  min-height: 0;
+  padding: 0;
+  visibility: hidden;
+  pointer-events: none;
+  background: none;
+}
+.hero-panel-measure .archive-hero__panel { width: 100%; }
+.hero-panel-measure .archive-hero__panel p { margin-block: 28px 34px; }
+@media (max-width: 767px) {
+  .hero-panel-measure .archive-hero__panel p { margin-block: 20px 32px; }
+}
+.opening--tochno.service-hero .opening__title .line,
+.opening--tochno.service-hero .opening__title .line > span { display: inline; padding-bottom: 0; }
+@media (min-width: 768px) {
+  .opening--tochno.service-hero .opening__content { padding-top: calc(var(--square) + 16px); padding-bottom: 32px; }
 }
