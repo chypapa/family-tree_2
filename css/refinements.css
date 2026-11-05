@@ -432,7 +432,7 @@ h4, .h4, .post__title, .why-card__title, .calc-q__title {
 .reviews__list { align-items: flex-start; }
 .review__text.is-expandable {
   overflow: hidden;
-  transition: height 240ms var(--ease-out);
+  transition: height 480ms cubic-bezier(.77, 0, .175, 1);
 }
 .review__toggle {
   display: block;
