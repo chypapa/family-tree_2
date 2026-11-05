@@ -174,7 +174,7 @@ h4, .h4, .post__title, .why-card__title, .calc-q__title {
   :root, .index-2 { --index-header: 54px; }
   .archive-hero__panel, .opening.service-hero .opening__content { padding: 28px 20px 32px; }
   .service-card--book .service-art { transform: none; }
-  .lead.container .lead__inner { border-radius: var(--radius); }
+  .lead.container .lead__inner { border-radius: 0; }
 }
 
 /* Restore the homepage panel's original vertical composition. */
@@ -360,7 +360,7 @@ h4, .h4, .post__title, .why-card__title, .calc-q__title {
 }
 .dot-list li { gap: 21px; }
 @media (max-width: 767px) { .dot-list li { gap: 11px; } }
-.opening--tochno.service-hero .opening__img { transform: scaleX(-1) scale(calc(1 + var(--hp, 0) * .08)); }
+.opening--tochno.service-hero .opening__img { transform: scale(calc(1 + var(--hp, 0) * .08)); }
 
 /* About: text above four benefit cards, with the supplied tree behind it. */
 .intro-text.section { display: block; position: relative; }
@@ -452,3 +452,6 @@ h4, .h4, .post__title, .why-card__title, .calc-q__title {
 @media (prefers-reduced-motion: reduce) {
   .review__text.is-expandable { transition: none; }
 }
+
+/* A little less warmth in the book cover photograph. */
+.opening--kniga.service-hero .opening__img { filter: saturate(.8); }
