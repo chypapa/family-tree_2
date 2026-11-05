@@ -1,0 +1,103 @@
+/* Shared typography and the terracotta surfaces from the client references. */
+:root, .index-2 {
+  --fs-body: clamp(16px, 1.2vw, 18px);
+  --fs-h4: clamp(17px, 1.5vw, 22px);
+  --fs-h3: clamp(18px, 2vw, 30px);
+  --fs-h2: clamp(19px, 2.4vw, 36px);
+  --fw-body: 500;
+  --fw-heading: 600;
+  --surface-red: #a33120;
+  --surface-light: #bd6658;
+  --red-gradient: linear-gradient(135deg, var(--surface-red), var(--surface-light));
+}
+h3, .h3, h4, .h4 { font-weight: 500; }
+.archive-hero__panel { background: linear-gradient(155deg, #a33120 12%, #b85f51 100%); }
+.service-card, .service-card--archive, .service-card--book, .service-card--tree {
+  background: linear-gradient(160deg, #a33120 10%, #b96052 100%);
+}
+.service-card--search { background: linear-gradient(35deg, #a33120, #c16b5e); }
+.intro-text .why-card { background: linear-gradient(35deg, #a33120, #bc6253); }
+.lead__inner { background: linear-gradient(125deg, #a33120 12%, #b76659 100%); }
+/* Keep the form surface continuous behind the map and the fields. */
+.lead__card { background: transparent; }
+
+/* Service photographs retain their own identity; the panel repeats the homepage. */
+.opening.service-hero {
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  border-radius: 0;
+  min-height: 720px;
+  height: auto;
+  min-height: max(720px, 98svh);
+  padding-top: 180px;
+}
+.opening.service-hero .opening__media::after { background: none; }
+.opening.service-hero .opening__content {
+  --square: clamp(45px, 5.3vw, 105px);
+  position: relative;
+  inset: auto;
+  width: min(100%, max(600px, 44%));
+  max-width: none;
+  container-type: inline-size;
+  padding: clamp(60px, 7vw, 145px) clamp(28px, 4.6vw, 105px) clamp(40px, 6vw, 110px) var(--edge);
+  background: linear-gradient(155deg, #a33120 12%, #b85f51 100%);
+  color: white;
+}
+.service-hero .opening__content::before,
+.service-hero .opening__content::after {
+  content: "";
+  position: absolute;
+  width: var(--square);
+  aspect-ratio: 1;
+  pointer-events: none;
+}
+.service-hero .opening__content::before {
+  left: 0; top: calc(-1 * var(--square));
+  background: #902d1c;
+  box-shadow: 0 var(--square) #822717, var(--square) var(--square) #922d1d;
+}
+.service-hero .opening__content::after {
+  right: 0; bottom: 0;
+  background: #822717;
+  box-shadow: calc(-1 * var(--square)) 0 #922d1d, var(--square) 0 #a33120b8, 0 calc(-1 * var(--square)) #922d1d;
+}
+.opening.service-hero .opening__title {
+  font-size: clamp(20px, 7.15cqi, 46px);
+  font-weight: 600;
+  line-height: 1.2;
+}
+.opening.service-hero .opening__text { margin-top: 28px; }
+@media (max-width: 1023px) {
+  :root, .index-2 { --fs-h2: 27px; --fs-h3: 24px; }
+  .opening.service-hero .opening__content { width: min(100%, 560px); }
+}
+@media (max-width: 767px) {
+  :root, .index-2 {
+    --fs-h2: clamp(19px, 5.8vw, 27px);
+    --fs-h3: clamp(18px, 5.2vw, 24px);
+    --fs-h4: clamp(17px, 4.6vw, 19px);
+  }
+  .opening.service-hero { min-height: 100svh; padding-top: 280px; }
+  .opening.service-hero .opening__media { bottom: auto; height: 360px; }
+  .opening.service-hero .opening__content { width: 100%; padding: 28px 20px 32px; }
+  .service-hero .opening__content::before {
+    box-shadow: 0 calc(-1 * var(--square)) #902d1c, var(--square) 0 #a33120, calc(2 * var(--square)) calc(-1 * var(--square)) #922d1d;
+  }
+  .service-hero .opening__content::after {
+    top: calc(-1 * var(--square)); bottom: auto;
+    box-shadow: calc(-1 * var(--square)) 0 #922d1d, 0 calc(-1 * var(--square)) #a33120b8;
+  }
+  .opening.service-hero .opening__text { margin-top: 20px; }
+}
+/* Bound long service copy to the panel at every viewport. */
+.opening.service-hero .opening__title,
+.opening.service-hero .opening__text { width: 100%; max-width: 100%; min-width: 0; overflow-wrap: anywhere; }
+.opening.service-hero .opening__title .line,
+.opening.service-hero .opening__title .line > span { white-space: normal; overflow-wrap: anywhere; }
+@media (max-width: 767px) {
+  .opening.service-hero { min-height: 0; }
+  .opening.service-hero .opening__title { font-size: 26px; }
+}
+.archive-hero__panel { isolation: isolate; }
+.archive-hero__panel::before, .archive-hero__panel::after { z-index: -1; }
