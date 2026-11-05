@@ -1,9 +1,5 @@
 /* Shared typography and the terracotta surfaces from the client references. */
 :root, .index-2 {
-  --fs-body: clamp(16px, 1.2vw, 18px);
-  --fs-h4: clamp(17px, 1.5vw, 22px);
-  --fs-h3: clamp(18px, 2vw, 30px);
-  --fs-h2: clamp(19px, 2.4vw, 36px);
   --fw-body: 500;
   --fw-heading: 600;
   --surface-red: #a33120;
@@ -74,10 +70,7 @@ h3, .h3, h4, .h4 { font-weight: 500; }
 }
 @media (max-width: 767px) {
   :root, .index-2 {
-    --fs-h2: clamp(19px, 5.8vw, 27px);
-    --fs-h3: clamp(18px, 5.2vw, 24px);
-    --fs-h4: clamp(17px, 4.6vw, 19px);
-  }
+        }
   .opening.service-hero { min-height: 100svh; padding-top: 280px; }
   .opening.service-hero .opening__media { bottom: auto; height: 360px; }
   .opening.service-hero .opening__content { width: 100%; padding: 28px 20px 32px; }
@@ -110,11 +103,6 @@ h3, .h3, h4, .h4 { font-weight: 500; }
   --radius-sm: 12px;
   --button-radius: 12px;
   --badge-radius: 12px;
-  --fs-h1: clamp(32px, 3.2vw, 46px);
-  --fs-h2: clamp(27px, 2.4vw, 36px);
-  --fs-h3: clamp(24px, 2vw, 30px);
-  --fs-h4: clamp(19px, 1.5vw, 22px);
-  --fs-body: clamp(16px, 1.2vw, 18px);
   --fw-body: 500;
   --fw-heading: 600;
   --button-font-weight: var(--fw-body);
@@ -303,4 +291,48 @@ h4, .h4, .post__title, .why-card__title, .calc-q__title {
 .opening--tochno.service-hero .opening__title .line > span { display: inline; padding-bottom: 0; }
 @media (min-width: 768px) {
   .opening--tochno.service-hero .opening__content { padding-top: calc(var(--square) + 16px); padding-bottom: 32px; }
+}
+
+/* Integer font sizes; responsive changes occur only at explicit breakpoints. */
+:root, .index-2 {
+  --fs-h1: 45px;
+  --fs-h2: 36px;
+  --fs-h3: 29px;
+  --fs-h4: 23px;
+  --fs-body: 18px;
+}
+@media (max-width: 1199px) {
+  :root, .index-2 { --fs-h1: 40px; --fs-h2: 32px; --fs-h3: 27px; --fs-h4: 21px; --fs-body: 17px; }
+}
+@media (max-width: 767px) {
+  :root, .index-2 { --fs-h1: 32px; --fs-h2: 27px; --fs-h3: 24px; --fs-h4: 19px; --fs-body: 16px; }
+}
+.stage__tag {
+  padding: 6px 12px;
+  background: transparent;
+  border: 1px solid white;
+  border-radius: 999px;
+  color: white;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+.about-svc .dot-list li::before {
+  width: 11px;
+  height: 11px;
+  background: var(--red);
+  border-radius: 50%;
+}
+/* Center the title and description together within the service panel. */
+.opening.service-hero .opening__content,
+.opening--tochno.service-hero .opening__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: calc(var(--square) + 16px);
+  padding-bottom: calc(var(--square) + 16px);
+}
+.opening.service-hero .opening__title,
+.opening.service-hero .opening__text { flex: none; }
+@media (max-width: 767px) {
+  .opening.service-hero .opening__content { padding-top: 24px; padding-bottom: 24px; }
 }
