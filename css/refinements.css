@@ -420,3 +420,35 @@ h4, .h4, .post__title, .why-card__title, .calc-q__title {
   .service-card--tree { order: 3; }
   .service-card--search { order: 4; }
 }
+/* Header uses the existing brand red; a small shadow separates it from the page. */
+.page > .header.header--sticky,
+.page > .header--sticky .header__bar { background-color: var(--red); }
+.page > .header.header--sticky { box-shadow: 0 3px 12px rgb(60 25 18 / 16%); }
+.intro-text::before { width: 68%; right: -6%; }
+@media (max-width: 1023px), (max-width: 1199px) and (orientation: portrait) {
+  .intro-text::before { display: none; }
+}
+.review__author, .voice__author { opacity: .5; }
+.reviews__list { align-items: flex-start; }
+.review__text.is-expandable {
+  overflow: hidden;
+  transition: height 240ms var(--ease-out);
+}
+.review__toggle {
+  display: block;
+  margin-top: 12px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--red);
+  font: inherit;
+  cursor: pointer;
+  text-align: left;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.review__toggle[hidden] { display: none; }
+.review__toggle:focus-visible { outline: 2px solid var(--red); outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) {
+  .review__text.is-expandable { transition: none; }
+}
