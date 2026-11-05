@@ -85,7 +85,7 @@
   min-height: clamp(310px, 22vw, 440px);
   padding: clamp(24px, 2.45vw, 50px);
   overflow: hidden;
-  border-radius: 12px;
+  border-radius: var(--radius);
   color: white;
   background: var(--index-red);
 }
@@ -103,7 +103,7 @@
 }
 .service-card__badges li {
   padding: 5px 14px;
-  border-radius: 999px;
+  border-radius: var(--radius);
   background: rgb(255 255 255 / 27%);
 }
 .service-card p { margin-block: 24px 32px; max-width: 34ch; }
@@ -115,7 +115,7 @@
   min-width: min(100%, 220px);
   margin-top: auto;
   padding: 8px 24px;
-  border-radius: 6px;
+  border-radius: var(--radius);
   background: white;
   color: #0e0908;
   text-decoration: none;
@@ -184,11 +184,11 @@
 }
 .service-card__badges li {
   padding: 5px 14px;
-  border-radius: 999px;
+  border-radius: var(--radius);
   background: rgb(255 255 255 / 27%);
 }
 .service-card p { max-width: none; }
-  .service-card a { width: 100%; border-radius: 12px; }
+  .service-card a { width: 100%; border-radius: var(--radius); }
   .service-card--archive p, .service-card--book p { margin-bottom: 8px; }
   .service-card--archive .service-art, .service-card--book .service-art {
     position: relative;

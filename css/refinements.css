@@ -7,17 +7,17 @@
   --fw-body: 500;
   --fw-heading: 600;
   --surface-red: #a33120;
-  --surface-light: #bd6658;
-  --red-gradient: linear-gradient(135deg, var(--surface-red), var(--surface-light));
+  --surface-light: #ad4b3c;
+  --red-gradient: linear-gradient(135deg, #a63928 0%, #ad4b3c 100%);
 }
 h3, .h3, h4, .h4 { font-weight: 500; }
-.archive-hero__panel { background: linear-gradient(155deg, #a33120 12%, #b85f51 100%); }
+.archive-hero__panel { background: var(--red-gradient); }
 .service-card, .service-card--archive, .service-card--book, .service-card--tree {
-  background: linear-gradient(160deg, #a33120 10%, #b96052 100%);
+  background: var(--red-gradient);
 }
-.service-card--search { background: linear-gradient(35deg, #a33120, #c16b5e); }
-.intro-text .why-card { background: linear-gradient(35deg, #a33120, #bc6253); }
-.lead__inner { background: linear-gradient(125deg, #a33120 12%, #b76659 100%); }
+.service-card--search { background: var(--red-gradient); }
+.intro-text .why-card { background: var(--red-gradient); }
+.lead__inner { background: var(--red-gradient); }
 /* Keep the form surface continuous behind the map and the fields. */
 .lead__card { background: transparent; }
 
@@ -41,7 +41,7 @@ h3, .h3, h4, .h4 { font-weight: 500; }
   max-width: none;
   container-type: inline-size;
   padding: clamp(60px, 7vw, 145px) clamp(28px, 4.6vw, 105px) clamp(40px, 6vw, 110px) var(--edge);
-  background: linear-gradient(155deg, #a33120 12%, #b85f51 100%);
+  background: var(--red-gradient);
   color: white;
 }
 .service-hero .opening__content::before,
@@ -101,3 +101,90 @@ h3, .h3, h4, .h4 { font-weight: 500; }
 }
 .archive-hero__panel { isolation: isolate; }
 .archive-hero__panel::before, .archive-hero__panel::after { z-index: -1; }
+
+/* Five text roles, shared across every page and component. */
+:root, .index-2 {
+  --text: #0e0908;
+  --muted: var(--text);
+  --radius: 12px;
+  --radius-sm: 12px;
+  --button-radius: 12px;
+  --badge-radius: 12px;
+  --fs-h1: clamp(32px, 3.2vw, 46px);
+  --fs-h2: clamp(27px, 2.4vw, 36px);
+  --fs-h3: clamp(24px, 2vw, 30px);
+  --fs-h4: clamp(19px, 1.5vw, 22px);
+  --fs-body: clamp(16px, 1.2vw, 18px);
+  --fw-body: 500;
+  --fw-heading: 600;
+  --button-font-weight: var(--fw-body);
+  --index-header: 64px;
+}
+body { color: var(--text); }
+/* Labels, badges and controls all use P; headings are assigned afterwards. */
+p, li, label, input, textarea, select, button,
+.btn, .field__label, .tag, .stage__tag, .gallery__badge,
+.post__btn-mobile, .service-card a, .review__author, .voice__author {
+  font-size: var(--fs-body) !important;
+  font-weight: var(--fw-body) !important;
+  line-height: var(--lh-body) !important;
+}
+h1, .h1, .opening__title, .archive-hero h1 {
+  font-size: var(--fs-h1) !important;
+  font-weight: var(--fw-heading) !important;
+  line-height: var(--lh-heading) !important;
+}
+h2, .h2, .focus__title, .lead__title, .calc__result-sum {
+  font-size: var(--fs-h2) !important;
+  font-weight: var(--fw-heading) !important;
+  line-height: var(--lh-heading) !important;
+}
+h3, .h3, .intro-text__lead, .service-card h3, #promo-title {
+  font-size: var(--fs-h3) !important;
+  font-weight: var(--fw-body) !important;
+  line-height: var(--lh-heading) !important;
+}
+h4, .h4, .post__title, .why-card__title, .calc-q__title {
+  font-size: var(--fs-h4) !important;
+  font-weight: var(--fw-body) !important;
+  line-height: var(--lh-heading) !important;
+}
+.post .post__desc { color: var(--text); }
+.review__author, .voice__author { opacity: 1; }
+
+/* One black header, including the mobile logo and menu, on every route. */
+.page > .header--sticky {
+  position: fixed;
+  inset: 0 0 auto !important;
+  width: 100% !important;
+  margin: 0 !important;
+  border-radius: 0;
+  background: var(--text);
+}
+.header--sticky .header__bar { height: var(--index-header); background: var(--text); }
+.header--sticky :is(.nav a, .logo-mark, .header__burger) { color: white !important; }
+.header--sticky :is(.header__pill, .header__burger) { background: transparent; }
+.header__mobile { justify-content: space-between; min-height: var(--index-header); padding-inline: var(--gut); }
+.index-2__mobile-logo { display: block; color: white; }
+.index-2__mobile-logo svg { display: block; width: 28px; height: 30px; }
+.policy__back { margin-top: calc(var(--index-header) + 24px); }
+
+/* Reserve actual space for both rows of squares, rather than covering the copy. */
+.archive-hero__panel,
+.opening.service-hero .opening__content {
+  background: var(--red-gradient);
+  padding-top: calc(var(--square) + 40px);
+  padding-bottom: calc(2 * var(--square) + 32px);
+}
+.archive-hero h1 .line { white-space: normal; }
+.opening.service-hero { margin-top: 0; }
+.opening.service-hero .opening__title,
+.opening.service-hero .opening__text { overflow-wrap: normal; }
+.archive-hero__panel > *, .opening.service-hero .opening__content > * { position: relative; z-index: 1; }
+.service-card--tree .service-art { opacity: .16; }
+@media (max-width: 767px) {
+  :root, .index-2 { --index-header: 54px; }
+  .archive-hero__panel, .opening.service-hero .opening__content { padding: 28px 20px 32px; }
+  .service-card--book .service-art { transform: none; }
+  .lead.container .lead__inner { border-radius: var(--radius); }
+}
